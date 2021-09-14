@@ -10,7 +10,7 @@ import './App.css'
 export const App = () => {
   return (
     <div>
-      <h2>Hello, world!</h2>
+      <h1>Hello, dec!</h1>
     </div>
   )
 }
