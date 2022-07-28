@@ -24,15 +24,13 @@ export const App = () => {
   console.log(dogUrl)
   return (
     <>
-    <header>
-      <h1>Dog アプリ!</h1>
-    </header>
-    <p>犬の画像を表示するサイトです。現在{count+1}枚目</p>
-    <button onClick={hoge}>更新</button>
-    <br/>
-    <img src={dogUrl} />
-    
-    
+      <header className='header'>
+        <h1>Dog アプリ!</h1>
+      </header>
+      <p>犬の画像を表示するサイトです。現在{count+1}枚目</p>
+      <button onClick={hoge}>更新</button>
+      <br/>
+      <img src={dogUrl} />
     </>
   )
 }
