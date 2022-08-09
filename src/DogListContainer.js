@@ -24,6 +24,7 @@ export const DogListContainer = () => {
     return (
         <BreedsSelect  
             breeds={breeds} 
+            selectedBreed={selectedBreed} 
             setSelectedBreed={setSelectedBreed} 
         />
     )

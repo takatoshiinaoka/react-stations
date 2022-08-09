@@ -9,7 +9,7 @@ export const BreedsSelect = (props) => {
 
     return (
         <>
-        <select onChange={(e) => handleChange(e)}>
+        <select value={props.selectedBreed} onChange={(e) => handleChange(e)}>
             {props.breeds.map((item) => <option value={item}>{item}</option>)}
         </select>
         </>
