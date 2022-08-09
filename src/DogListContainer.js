@@ -19,8 +19,6 @@ export const DogListContainer = () => {
         })
     },[])
 
-    console.log("ここ",selectedBreed)
-
     return (
         <BreedsSelect  
             breeds={breeds} 
