@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 // DO NOT DELETE
 import React from "react";
 
 export const DogImage = (props) => {
     return (
-        // eslint-disable-next-line react/prop-types
-        <img className='img' src={props.url} />
+        <div className=''>
+            <img className='img' src={props.url} />
+        </div>
     )
 }
