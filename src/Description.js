@@ -1,5 +1,6 @@
 // DO NOT DELETE
 import React from 'react'
+import { Typography,Button } from '@material-ui/core/'
 import { DogImage } from './DogImage'
 
 let count = 1
@@ -21,11 +22,15 @@ export const Description = () => {
     return (
         <div className='description'>
             <div className='about'>
-                <p>犬の画像を表示するサイトです。<br/>現在{count}枚目</p>
+                <Typography>
+                    犬の画像を表示するサイトです。<br/>現在{count}枚目
+                </Typography>
             </div>
             <div className='photo'>
                 <DogImage url={dogUrl} /> <br/>
-                <button onClick={handleGetDogUrl}>更新</button>
+                <Button variant="contained" color="primary" onClick={handleGetDogUrl}>
+                    更新
+                </Button>
             </div>
         </div>
     )

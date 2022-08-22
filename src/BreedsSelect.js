@@ -2,34 +2,58 @@
 /* eslint-disable react/jsx-key */
 // DO NOT DELETE
 import React from "react";
+import { Grid } from "@material-ui/core";
 import { DogImage } from "./DogImage";
+import { BreedsList } from "./BreedsList";
 
 const imgNum = 12
 
+
+
+const Gallary = (props) => {
+    const { urls } = props
+    return(
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            {urls.map(url => (
+                <Grid item xs={4}>
+                    <DogImage url={url} />
+                </Grid>
+            ))}
+        </Grid>
+    )
+}
+
 export const BreedsSelect = (props) => {
-    const getImgsUrl = `https://dog.ceo/api/breed/${props.selectedBreed}/images/random/${imgNum}`
+    const { 
+        breeds,
+        breedsUrls, 
+        setBreedsUrls, 
+        selectedBreed, 
+        setSelectedBreed 
+    } = props
 
-    const handleChange = (e) => (props.setSelectedBreed(e.target.value))
+    const getImgsUrl = `https://dog.ceo/api/breed/${selectedBreed}/images/random/${imgNum}`
 
-    const handleGetBreedsUrl = () => {
-        fetch(getImgsUrl)
+    const handleChange = (e) => (setSelectedBreed(e.target.value))
+
+    const handleGetBreedsUrl = async () => {
+        await fetch(getImgsUrl)
             .catch(e => console.log(e))
             .then(res => res.json())
-            .then(data => props.setBreedsUrls(data.message))
+            .then(data => setBreedsUrls(data.message))
     }
 
     return (
-        <div>
-            <div>
-                Breeds List
-                <select value={props.selectedBreed} onChange={(e) => handleChange(e)}>
-                    {props.breeds.map((item) => <option value={item}>{item}</option>)}
-                </select>
-                <button onClick={handleGetBreedsUrl}>表示</button>
-            </div>
-            <div>
-                {props.breedsUrls.map(url => <DogImage url={url} />)}
-            </div>
-        </div>
+        <>
+            <BreedsList 
+                breeds={breeds}
+                selectedBreed={selectedBreed}
+                handleChange={handleChange}
+                handleGetBreedsUrl={handleGetBreedsUrl}
+            />
+            <Gallary 
+                urls={breedsUrls} 
+            />
+        </>
     )
 }
